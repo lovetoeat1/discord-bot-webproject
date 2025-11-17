@@ -68,6 +68,14 @@ body {
     letter-spacing: 2px;
     font-size: 3rem;
     margin: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#main-title:hover {
+    color: #74c0fc;
+    text-shadow: 0 0 30px rgba(116, 192, 252, 0.6);
+    transform: translateY(-3px);
 }
 .container {
     display: flex;
