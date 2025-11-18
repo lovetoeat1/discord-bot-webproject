@@ -156,9 +156,14 @@ client.on('messageCreate', (message) => {
     }
     
     if (message.content === '!motivation') {
-        message.reply(getRandomResponse(motivationQuotes));
+        message.reply(getRandomResponse(motivationQuotes))
     }
     
+    if (messages.content === '!gg') {
+        messages.reply("GG WP! 🎉")
+    }
+
+
     if (message.content === '!goodnight') {
         message.reply(getRandomResponse(goodnightResponses));
     }
