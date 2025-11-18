@@ -38,8 +38,9 @@ app.get('/health', (req, res) => {
     res.status(200).send('OK');
 });
 
-const server = app.listen(PORT, '0.0.0.0', () => {
+const server = app.listen(PORT, () => {
     console.log(`✅ HTTP Server running on port ${PORT}`);
+    console.log(`🌍 Accessible at http://localhost:${PORT}`);
 });
 
 const programmingMemes = [
@@ -129,13 +130,11 @@ const processedMessages = new Set();
 
 client.on('messageCreate', (message) => {
     if (message.author.bot) return;
-    
-    // Verhindere doppelte Verarbeitung
+
     const messageId = message.id;
     if (processedMessages.has(messageId)) return;
     processedMessages.add(messageId);
-    
-    // Aufräumen nach 1 Minute
+   
     setTimeout(() => {
         processedMessages.delete(messageId);
     }, 60000);
@@ -144,6 +143,10 @@ client.on('messageCreate', (message) => {
         message.reply(getRandomResponse(hiResponses));
     }
     
+    if (message.content === '!github') {
+        message.reply("Check that out my friend! `https://github.com/molaskidata`");
+    }
+
     if (message.content === '!coffee') {
         message.reply(getRandomResponse(coffeeResponses));
     }
@@ -161,7 +164,7 @@ client.on('messageCreate', (message) => {
     }
     
     if (message.content === '!help') {
-        message.reply('**Available Commands:**\n`!hi` - Say hello\n`!coffee` - Time for coffee!\n`!meme` - Programming memes\n`!motivation` - Get motivated\n`!goodnight` - Good night messages\n`!ping` - Test bot\n`!info` - Bot info');
+        message.reply('**Available Commands:**\n`!hi` - Say hello\n`!coffee` - Time for coffee!\n`!meme` - Programming memes\n `!github` - Bots Owner Github and my Repo! \n`!motivation` - Get motivated\n`!goodnight` - Good night messages\n`!ping` - Test bot\n`!info` - Bot info');
     }
     
     if (message.content === '!ping') {
