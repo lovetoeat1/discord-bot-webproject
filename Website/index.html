@@ -140,5 +140,13 @@
     </footer>
     
     <script src="shades.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const footer = document.querySelector('.site-footer-inner');
+    if (footer) {
+      footer.innerHTML = footer.innerHTML.replace(/© \\d{4}/, `© ${new Date().getFullYear()}`);
+    }
+  });
+</script>
 </body>
 </html>
